@@ -1,5 +1,16 @@
-<h1>{{tune.title}}</h1>
-<audio controls>
-  <source src="{{tune.audioSrcLocation}}" type="audio/mpeg"> Your browser does not support the audio element.
-</audio>
-<h3> What a ripping tune!</h3>
+<button class="btn btn-primary" (click)="goBack()">Back To Tunes</button>
+<div class="content-justify-center text-center">
+  <h1>{{tune.title}}</h1>
+  <audio controls>
+    <source src="{{tune.audioSrcLocation}}" type="audio/mpeg"> Your browser does not support the audio element.
+  </audio>
+  <h3> Artist </h3>
+  <p>{{tune.artist}}</p>
+  <h3> Key </h3>
+  <p>{{tune.musicalKey}}</p>
+  <h3> Tuning </h3>
+  <p>{{tune.tuning}}</p>
+  <h3> Notes </h3>
+  <p>{{tune.notes}}</p>
+
+</div>

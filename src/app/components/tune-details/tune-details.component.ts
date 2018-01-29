@@ -26,4 +26,8 @@ export class TuneDetailsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get("id");
     this.tuneService.getTune(id).subscribe(tune => (this.tune = tune));
   }
+
+  goBack(){
+    this.location.back();
+  }
 }
