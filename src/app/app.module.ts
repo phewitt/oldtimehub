@@ -9,6 +9,7 @@ import { TuneListComponent } from './components/tune-list/tune-list.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { TuneDetailsComponent } from './components/tune-details/tune-details.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeComponent } from './components/home/home.component';
     GlobalNavbarComponent,
     TuneListComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    TuneDetailsComponent
   ],
   imports: [
     BrowserModule,
