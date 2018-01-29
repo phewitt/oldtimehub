@@ -1,16 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+// Angular modules
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// 3rd party modules
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import { AppComponent } from './app.component';
-import { GlobalNavbarComponent } from './components/global-navbar/global-navbar.component';
-import { TuneListComponent } from './components/tune-list/tune-list.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HomeComponent } from './components/home/home.component';
-import { TuneDetailsComponent } from './components/tune-details/tune-details.component';
+// Services
+import { TuneService } from "./services/tune.service";
 
+// Components
+import { AppComponent } from "./app.component";
+import { GlobalNavbarComponent } from "./components/global-navbar/global-navbar.component";
+import { TuneListComponent } from "./components/tune-list/tune-list.component";
+import { AppRoutingModule } from ".//app-routing.module";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { HomeComponent } from "./components/home/home.component";
+import { TuneDetailsComponent } from "./components/tune-details/tune-details.component";
 
 @NgModule({
   declarations: [
@@ -21,12 +26,8 @@ import { TuneDetailsComponent } from './components/tune-details/tune-details.com
     HomeComponent,
     TuneDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    NgbModule.forRoot(),
-    AppRoutingModule
-  ],
-  providers: [],
+  imports: [BrowserModule, NgbModule.forRoot(), AppRoutingModule],
+  providers: [TuneService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

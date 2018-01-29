@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
+import { TuneService } from "../../services/tune.service";
+
 import { Tune } from "../../models/tune";
 import { TUNES } from "../../mock-data/tunes";
 @Component({
@@ -8,9 +10,16 @@ import { TUNES } from "../../mock-data/tunes";
   styleUrls: ["./tune-list.component.css"]
 })
 export class TuneListComponent implements OnInit {
-  tunes = TUNES;
+  tunes: Tune[];
 
-  constructor() {}
+  constructor(private tuneService: TuneService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTunes();
+  }
+
+  getTunes(): void {
+    this.tuneService.getTunes().subscribe(tunes => this.tunes = tunes);
+  }
+  
 }
