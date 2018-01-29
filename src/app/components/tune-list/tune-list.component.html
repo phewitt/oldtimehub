@@ -1,3 +1,34 @@
-<p>
-  tune-list works!
-</p>
+<div class="jumbotron text-center">
+  <h1 class="display-3 justify-content-center">Tunes</h1>
+  <p class="lead">Here will be a list of all the tunes from a variety of sources, currently the only source is <a href="www.slippery-hill.com">Slippery-Hill</a></p>
+
+</div>
+<table class="table table-hover">
+  <thead class="thead-inverse thead-light">
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tune of tunes">
+      <td scope="row">{{tune.title}}</td>
+      <td>{{tune.artist}}</td>
+      <td>{{tune.musicalKey}}</td>
+    </tr>
+  </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
+    <li class="page-item"><a class="page-link">3</a></li>
+    <li class="page-item">
+      <a class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
