@@ -20,6 +20,9 @@
     </tr>
   </thead>
   <tbody>
+    <div *ngIf="!tunes" class="text-center justify-content-center">
+      <h2>Loading...</h2>
+    </div>
     <tr *ngFor="let tune of tunes" routerLink="/tune-details/{{tune.id}}">
       <td scope="row">{{tune.title}}</td>
       <td>{{tune.artist}}</td>
