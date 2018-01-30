@@ -23,7 +23,7 @@ export class TuneDetailsComponent implements OnInit {
   }
 
   getTune(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+    const id = this.route.snapshot.paramMap.get("id");
     this.tuneService.getTune(id).subscribe(tune => (this.tune = tune));
   }
 

@@ -4,6 +4,10 @@ import { NgModule } from "@angular/core";
 
 // 3rd party modules
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { AngularFireModule } from "angularfire2";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+
+import { environment } from "../environments/environment";
 
 // Services
 import { TuneService } from "./services/tune.service";
@@ -26,7 +30,13 @@ import { TuneDetailsComponent } from "./components/tune-details/tune-details.com
     HomeComponent,
     TuneDetailsComponent
   ],
-  imports: [BrowserModule, NgbModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    NgbModule.forRoot(),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
+  ],
   providers: [TuneService],
   bootstrap: [AppComponent]
 })

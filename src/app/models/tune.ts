@@ -1,5 +1,5 @@
 export class Tune {
-  id: number;
+  id?: string;
   title: string;
   artist: string;
   musicalKey: string;
