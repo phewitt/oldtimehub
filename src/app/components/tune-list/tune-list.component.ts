@@ -19,7 +19,6 @@ export class TuneListComponent implements OnInit {
   }
 
   getTunes(): void {
-    this.tuneService.getTunes().subscribe(tunes => this.tunes = tunes);
+    this.tuneService.getTunes().subscribe(tunes => (this.tunes = tunes));
   }
-  
 }
