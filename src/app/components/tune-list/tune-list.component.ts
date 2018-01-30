@@ -10,15 +10,9 @@ import { TUNES } from "../../mock-data/tunes";
   styleUrls: ["./tune-list.component.css"]
 })
 export class TuneListComponent implements OnInit {
-  tunes: Tune[];
 
-  constructor(private tuneService: TuneService) {}
-
-  ngOnInit() {
-    this.getTunes();
+  constructor(private tuneService: TuneService) {
   }
 
-  getTunes(): void {
-    this.tuneService.getTunes().subscribe(tunes => (this.tunes = tunes));
-  }
+  ngOnInit() {}
 }

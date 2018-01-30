@@ -9,13 +9,17 @@ import {
 } from "angularfire2/firestore";
 import { Tune } from "../models/tune";
 import { TUNES } from "../mock-data/tunes";
+
 @Injectable()
 export class TuneService {
-  constructor(private readonly afs: AngularFirestore) {}
+  tunesCollectionRef: AngularFirestoreCollection<Tune>;
+  tunes: Observable<Tune[]>;
+  constructor(private afs: AngularFirestore) {
+    this.tunesCollectionRef = this.afs.collection<Tune>("tunes", ref =>
+      ref.orderBy("title").limit(50)
+    );
 
-  getTunes(): Observable<Tune[]> {
-    let tunesCollectionRef = this.afs.collection<Tune>("tunes", ref => ref.limit(50));
-    return tunesCollectionRef.snapshotChanges().map(actions => {
+    this.tunes = this.tunesCollectionRef.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Tune;
         const id = a.payload.doc.id;
