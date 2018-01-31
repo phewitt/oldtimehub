@@ -11,6 +11,7 @@ import { environment } from "../environments/environment";
 
 // Services
 import { TuneService } from "./services/tune.service";
+import { PaginationService } from "./services/pagination.service";
 
 // Components
 import { AppComponent } from "./app.component";
@@ -20,7 +21,7 @@ import { AppRoutingModule } from ".//app-routing.module";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { HomeComponent } from "./components/home/home.component";
 import { TuneDetailsComponent } from "./components/tune-details/tune-details.component";
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,16 +29,17 @@ import { TuneDetailsComponent } from "./components/tune-details/tune-details.com
     TuneListComponent,
     PageNotFoundComponent,
     HomeComponent,
-    TuneDetailsComponent
+    TuneDetailsComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    InfiniteScrollModule
   ],
-  providers: [TuneService],
+  providers: [TuneService, PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,47 +1,52 @@
-<div class="jumbotron text-center">
-  <h1 class="display-3 justify-content-center">Tunes</h1>
-  <p class="lead">
-    This will be a list of all the tunes from a variety of sources, currently the only source is
-    <a href="https://www.slippery-hill.com">Slippery-Hill.</a> Definitely go check out Slippery-Hill and donate to them.
-  </p>
-  <p>
-    <b>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1 class="display-3 justify-content-center">Tunes</h1>
+    <p class="lead">
+      This will be a list of all the tunes from a variety of sources, currently the only source is
+      <a href="https://www.slippery-hill.com">Slippery-Hill.</a> Definitely go check out Slippery-Hill and donate to them.
+    </p>
+    <p>
+      <b>
       Click on a tune below!!
     </b>
-  </p>
+    </p>
 
+  </div>
+  <table class="table table-hover">
+    <thead class="thead-inverse thead-light">
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Key</th>
+      </tr>
+    </thead>
+    <tbody infiniteScroll infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [infiniteScrollContainer]="selector"
+      [fromRoot]="true" (scrolled)="onScroll()">
+      <div *ngIf="!tuneService.tunes" class="text-center justify-content-center">
+        <h2>Loading...</h2>
+      </div>
+      <tr *ngFor="let tune of page.data | async" routerLink="/tune-details/{{tune.id}}">
+        <td scope="row">{{tune.title}}</td>
+        <td>{{tune.artist}}</td>
+        <td>{{tune.musicalKey}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <button class="btn btn-primary" (click)="getMore()">GetLastTunes!</button>
+
+  <p class="text-center text-danger">Page navigation does not function</p>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link">1</a></li>
+      <li class="page-item"><a class="page-link">2</a></li>
+      <li class="page-item"><a class="page-link">3</a></li>
+      <li class="page-item">
+        <a class="page-link">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
-<table class="table table-hover">
-  <thead class="thead-inverse thead-light">
-    <tr>
-      <th>Title</th>
-      <th>Artist</th>
-      <th>Key</th>
-    </tr>
-  </thead>
-  <tbody>
-    <div *ngIf="!tuneService.tunes" class="text-center justify-content-center">
-      <h2>Loading...</h2>
-    </div>
-    <tr *ngFor="let tune of tuneService.tunes | async" routerLink="/tune-details/{{tune.id}}">
-      <td scope="row">{{tune.title}}</td>
-      <td>{{tune.artist}}</td>
-      <td>{{tune.musicalKey}}</td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<p class="text-center text-danger">Page navigation does not function</p>
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link">1</a></li>
-    <li class="page-item"><a class="page-link">2</a></li>
-    <li class="page-item"><a class="page-link">3</a></li>
-    <li class="page-item">
-      <a class="page-link">Next</a>
-    </li>
-  </ul>
-</nav>
