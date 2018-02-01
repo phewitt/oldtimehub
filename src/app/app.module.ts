@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { HomeComponent } from "./components/home/home.component";
 import { TuneDetailsComponent } from "./components/tune-details/tune-details.component";
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     PageNotFoundComponent,
     HomeComponent,
     TuneDetailsComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,17 +12,17 @@
 
 </div>
 
-<div class="scrollable" infiniteScroll [infiniteScrollDistance]=".5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
-  [scrollWindow]="false">
+<div class="shadow">
   <table class="table table-hover">
     <thead class="thead-info">
       <tr>
         <th>Title</th>
         <th>Artist</th>
         <th>Key</th>
+        <th>Tuning</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody infiniteScroll [infiniteScrollDistance]=".1" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
       <div *ngIf="!tuneService.tunes" class="text-center justify-content-center">
         <h2>Loading...</h2>
       </div>
@@ -30,7 +30,10 @@
         <td>{{tune.title}}</td>
         <td>{{tune.artist}}</td>
         <td>{{tune.musicalKey}}</td>
+        <td>{{tune.tuning}}</td>
       </tr>
+      <app-spinner *ngIf="page.loading | async"></app-spinner>
     </tbody>
   </table>
+ 
 </div>
