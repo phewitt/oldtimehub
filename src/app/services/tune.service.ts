@@ -56,8 +56,4 @@ export class TuneService {
     let tuneDoc = this.afs.doc<Tune>("tunes/" + id);
     return tuneDoc.valueChanges();
   }
-
-  getNext50(): void {
-    //  this.tunesCollectionRef = this.afs.collection<Tune>("tunes", ref => ref.s
-  }
 }
