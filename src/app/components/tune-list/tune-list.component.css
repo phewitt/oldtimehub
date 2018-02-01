@@ -1,4 +1,4 @@
-.scroll-container{
-  height: 100px;
-  overflow: scroll;
+.scrollable{
+  height: 20rem;
+  overflow-y: scroll;
 }

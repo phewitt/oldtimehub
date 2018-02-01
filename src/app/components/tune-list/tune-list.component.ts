@@ -26,6 +26,6 @@ export class TuneListComponent implements OnInit {
 
   onScroll(e) {
     console.log("scrolled");
-  // this.getMore();
+    this.getMore();
   }
 }

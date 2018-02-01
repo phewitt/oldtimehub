@@ -78,9 +78,10 @@ export class PaginationService {
     return col.snapshotChanges()
       .do(arr => {
         let values = arr.map(snap => {
-          const data = snap.payload.doc.data()
-          const doc = snap.payload.doc
-          return { ...data, doc }
+          const data = snap.payload.doc.data();
+          const doc = snap.payload.doc;
+          const id = snap.payload.doc.id;
+          return { ...data, doc, id }
         })
   
         // If prepending, reverse the batch order
