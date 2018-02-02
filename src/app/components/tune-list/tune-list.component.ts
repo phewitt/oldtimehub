@@ -30,8 +30,6 @@ export class TuneListComponent implements OnInit {
     this.getMore();
   }
   searchByTitle(searchTitle) {
-    if (searchTitle){
-      this.page.searchByTitle(searchTitle);
-    }
+    this.tuneService.Search(searchTitle);
   }
 }

@@ -26,9 +26,12 @@ const index = client.initIndex(ALGOLIA_INDEX_NAME);
 
 @Injectable()
 export class TuneService {
+ public _tunes = new BehaviorSubject<Tune[]>([]);
   tunes: Observable<Tune[]>;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore) {
+    this.tunes = this._tunes.asObservable();
+  }
 
   getTune(id: string): Observable<Tune> {
     let tuneDoc = this.afs.doc<Tune>("tunes/" + id);
@@ -36,17 +39,18 @@ export class TuneService {
   }
 
   Search(searchStr) {
-    index.search({ query: searchStr }, function searchDone(err, content) {
+    index.search({ query: searchStr }, (err, content) => {
       if (err) {
         console.error(err);
         return;
       }
-    
+        
+      let searchedTunes = [];
       for (var h in content.hits) {
-        console.log(
-          `Hit(${content.hits[h].objectID}): ${content.hits[h].toString()}`
-        );
+        searchedTunes.push(content.hits[h] as Tune);
       }
+
+      this._tunes.next(searchedTunes);
     });
   }
 }
