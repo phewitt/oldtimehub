@@ -37,7 +37,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     BrowserModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     InfiniteScrollModule
   ],

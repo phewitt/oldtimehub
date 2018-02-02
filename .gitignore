@@ -43,3 +43,6 @@ testem.log
 Thumbs.db
 
 src/environments/*
+functions/*.js
+functions/node_modules
+functions/lib

@@ -71,12 +71,14 @@ export class PaginationService {
       return this.query.prepend ? val.concat(acc) : acc.concat(val);
     });
     const results = this.afs.collection(this.query.path, ref => {
+      console.log(searchStr);
       return ref
-      .where(this.query.field, "==", searchStr)
+      .orderBy("title")
+      .startAt(searchStr)
+      .endAt(searchStr + "\uf8ff")
      // .orderBy(this.query.field, this.query.reverse ? "desc" : "asc")
       .limit(this.query.limit); 
     });
-    console.log(results);
     this.mapAndUpdate(results);
   }
   // Determines the doc snapshot to paginate query

@@ -13,15 +13,16 @@ import {
   AngularFirestoreDocument
 } from "angularfire2/firestore";
 import { Tune } from "../models/tune";
+import { QueryConfig } from "../models/query-config";
 import { TUNES } from "../mock-data/tunes";
+import { environment } from "../../environments/environment";
 
-interface QueryConfig {
-  path: string; //  path to collection
-  field: string; // field to orderBy
-  limit: number; // limit per query
-  reverse: boolean; // reverse order?
-  prepend: boolean; // prepend to source?
-}
+const algoliasearch = require('algoliasearch');
+const ALGOLIA_ID = environment.algolia.app_id;
+const ALGOLIA_SEARCH_KEY = environment.algolia.search_key;
+const ALGOLIA_INDEX_NAME = 'tunes';
+const client = algoliasearch(ALGOLIA_ID, ALGOLIA_SEARCH_KEY);
+const index = client.initIndex(ALGOLIA_INDEX_NAME);
 
 @Injectable()
 export class TuneService {
@@ -32,5 +33,20 @@ export class TuneService {
   getTune(id: string): Observable<Tune> {
     let tuneDoc = this.afs.doc<Tune>("tunes/" + id);
     return tuneDoc.valueChanges();
+  }
+
+  Search(searchStr) {
+    index.search({ query: searchStr }, function searchDone(err, content) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    
+      for (var h in content.hits) {
+        console.log(
+          `Hit(${content.hits[h].objectID}): ${content.hits[h].toString()}`
+        );
+      }
+    });
   }
 }
