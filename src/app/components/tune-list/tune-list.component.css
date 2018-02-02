@@ -6,6 +6,9 @@
   padding: 2rem 1rem;
 }
 
+.input-group{
+  margin-bottom: 2rem;
+}
 tbody {
   display: block;
   height: 25rem;

@@ -10,6 +10,12 @@
     </b>
   </p>
 </div>
+<div class="input-group">
+  <input #titleSearch type="text" class="form-control" placeholder="Search by title...">
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button" (click)="searchByTitle(titleSearch.value)">Search</button>
+  </div>
+</div>
 
 <div class="shadow">
   <table class="table table-hover">
@@ -22,9 +28,6 @@
       </tr>
     </thead>
     <tbody infiniteScroll [infiniteScrollDistance]=".1" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
-      <div *ngIf="!tuneService.tunes" class="text-center justify-content-center">
-        <h2>Loading...</h2>
-      </div>
       <tr *ngFor="let tune of page.data | async" routerLink="/tune-details/{{tune.id}}">
         <td>{{tune.title}}</td>
         <td>{{tune.artist}}</td>

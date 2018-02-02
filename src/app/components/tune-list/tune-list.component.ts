@@ -17,6 +17,7 @@ export class TuneListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log("init");
     this.page.init("tunes", "title", { reverse: false, prepend: false });
   }
 
@@ -27,5 +28,10 @@ export class TuneListComponent implements OnInit {
   onScroll(e) {
     console.log("scrolled");
     this.getMore();
+  }
+  searchByTitle(searchTitle) {
+    if (searchTitle){
+      this.page.searchByTitle(searchTitle);
+    }
   }
 }
