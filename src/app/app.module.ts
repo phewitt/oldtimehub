@@ -6,6 +6,7 @@ import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { environment } from "../environments/environment";
 
@@ -23,6 +24,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { TuneDetailsComponent } from "./components/tune-details/tune-details.component";
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    AngularFontAwesomeModule
   ],
   providers: [TuneService, PaginationService],
   bootstrap: [AppComponent]

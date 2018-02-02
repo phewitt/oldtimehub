@@ -16,12 +16,12 @@ import { Tune } from "../models/tune";
 import { QueryConfig } from "../models/query-config";
 import { TUNES } from "../mock-data/tunes";
 import { environment } from "../../environments/environment";
+import * as algoSearch from "algoliasearch";
 
-const algoliasearch = require('algoliasearch');
 const ALGOLIA_ID = environment.algolia.app_id;
 const ALGOLIA_SEARCH_KEY = environment.algolia.search_key;
 const ALGOLIA_INDEX_NAME = 'tunes';
-const client = algoliasearch(ALGOLIA_ID, ALGOLIA_SEARCH_KEY);
+const client = algoSearch(ALGOLIA_ID, ALGOLIA_SEARCH_KEY);
 const index = client.initIndex(ALGOLIA_INDEX_NAME);
 
 @Injectable()
@@ -44,12 +44,12 @@ export class TuneService {
         console.error(err);
         return;
       }
-        
+
       let searchedTunes = [];
       for (var h in content.hits) {
         searchedTunes.push(content.hits[h] as Tune);
       }
-
+      console.log(searchedTunes.length);
       this._tunes.next(searchedTunes);
     });
   }

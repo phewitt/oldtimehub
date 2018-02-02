@@ -11,10 +11,10 @@
   </p>
 </div>
 <div class="input-group">
-  <input #titleSearch type="text" class="form-control" placeholder="Search by title..." (keyup)="searchByTitle(titleSearch.value)">
-  <div class="input-group-append">
-    <button class="btn btn-outline-primary" type="button" (click)="searchByTitle(titleSearch.value)">Search</button>
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
   </div>
+  <input #titleSearch type="text" class="form-control" placeholder="Search by anything!" (keyup)="searchByTitle(titleSearch.value)">
 </div>
 
 <div class="shadow">
@@ -27,14 +27,13 @@
         <th>Tuning</th>
       </tr>
     </thead>
-    <tbody infiniteScroll [infiniteScrollDistance]=".1" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
-      <tr *ngFor="let tune of tuneService.tunes | async" routerLink="/tune-details/{{tune.id}}">
+    <tbody>
+      <tr *ngFor="let tune of tuneService.tunes | async" routerLink="/tune-details/{{tune.objectID}}">
         <td>{{tune.title}}</td>
         <td>{{tune.artist}}</td>
         <td>{{tune.musicalKey}}</td>
         <td>{{tune.tuning}}</td>
       </tr>
-      <app-spinner *ngIf="page.loading | async"></app-spinner>
     </tbody>
   </table>
 </div>

@@ -12,22 +12,17 @@ import { TUNES } from "../../mock-data/tunes";
 })
 export class TuneListComponent implements OnInit {
   constructor(
-    private tuneService: TuneService,
-    public page: PaginationService
+    private tuneService: TuneService
   ) {}
 
   ngOnInit() {
     console.log("init");
-    this.page.init("tunes", "title", { reverse: false, prepend: false });
-  }
 
-  getMore() {
-    this.page.more();
+    this.searchByTitle("");
   }
-
+  
   onScroll(e) {
     console.log("scrolled");
-    this.getMore();
   }
   searchByTitle(searchTitle) {
     this.tuneService.Search(searchTitle);
