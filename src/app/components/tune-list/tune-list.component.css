@@ -4,10 +4,15 @@
 
 .jumbotron {
   padding: 2rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.algolia{
+  margin-bottom:1rem;
 }
 
 .input-group{
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 tbody {
   display: block;

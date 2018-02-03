@@ -10,11 +10,14 @@
     </b>
   </p>
 </div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+<div class="row">
+  <div class="input-group col-lg">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+    </div>
+    <input #titleSearch type="text" class="form-control" placeholder="Search by anything!" (keyup)="searchByTitle(titleSearch.value)">
   </div>
-  <input #titleSearch type="text" class="form-control" placeholder="Search by anything!" (keyup)="searchByTitle(titleSearch.value)">
+  <img class="col-2 align-middle algolia" src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg" alt="Algolia powered by">
 </div>
 
 <div class="shadow">
