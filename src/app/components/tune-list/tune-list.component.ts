@@ -12,7 +12,7 @@ import { TUNES } from "../../mock-data/tunes";
 })
 export class TuneListComponent implements OnInit {
   constructor(
-    private tuneService: TuneService
+    public tuneService: TuneService
   ) {}
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class TuneListComponent implements OnInit {
 
     this.searchByTitle("");
   }
-  
+
   onScroll(e) {
     console.log("scrolled");
   }
