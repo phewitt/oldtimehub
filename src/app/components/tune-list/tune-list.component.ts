@@ -16,8 +16,6 @@ export class TuneListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("init");
-
     this.searchByTitle("");
   }
 
